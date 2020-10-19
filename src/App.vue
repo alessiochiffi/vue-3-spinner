@@ -1,26 +1,63 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <img src="./assets/logo.png" />
+    <Slices></Slices>
+    <Wheel
+      :segments="[
+        {
+          textFillStyle: '#fff',
+          fillStyle: '#000',
+          text: 'Prize 1',
+        },
+        {
+          textFillStyle: '#000',
+          fillStyle: '#fadede',
+          text: 'Prize 2',
+        },
+        {
+          textFillStyle: '#fff',
+          fillStyle: '#000',
+          text: 'Prize 3',
+        },
+        {
+          textFillStyle: '#000',
+          fillStyle: '#fadede',
+          text: 'Prize 4',
+        },
+        {
+          textFillStyle: '#fff',
+          fillStyle: '#000',
+          text: 'Prize 5',
+        },
+        {
+          textFillStyle: '#000',
+          fillStyle: '#fadede',
+          text: 'Prize 6',
+        },
+        {
+          textFillStyle: '#fff',
+          fillStyle: '#000',
+          text: 'Prize 7',
+        },
+        {
+          textFillStyle: '#000',
+          fillStyle: '#fadede',
+          text: 'Prize 8',
+        },
+      ]"
+    ></Wheel>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Slices from './components/Slices.vue';
+import Wheel from './components/Wheel.vue';
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld
-  }
-}
+    Wheel,
+    Slices,
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
