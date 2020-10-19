@@ -47,7 +47,7 @@ export default {
         textFontSize: 14,
         outterRadius: 310,
         innerRadius: 20,
-        lineWidth: 10,
+        lineWidth: 2,
         animation: {
           type: 'spinOngoing',
           duration: 1,

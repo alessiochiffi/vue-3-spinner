@@ -1,51 +1,13 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" />
-    <Slices></Slices>
-    <Wheel
-      :segments="[
-        {
-          textFillStyle: '#fff',
-          fillStyle: '#000',
-          text: 'Prize 1',
-        },
-        {
-          textFillStyle: '#000',
-          fillStyle: '#fadede',
-          text: 'Prize 2',
-        },
-        {
-          textFillStyle: '#fff',
-          fillStyle: '#000',
-          text: 'Prize 3',
-        },
-        {
-          textFillStyle: '#000',
-          fillStyle: '#fadede',
-          text: 'Prize 4',
-        },
-        {
-          textFillStyle: '#fff',
-          fillStyle: '#000',
-          text: 'Prize 5',
-        },
-        {
-          textFillStyle: '#000',
-          fillStyle: '#fadede',
-          text: 'Prize 6',
-        },
-        {
-          textFillStyle: '#fff',
-          fillStyle: '#000',
-          text: 'Prize 7',
-        },
-        {
-          textFillStyle: '#000',
-          fillStyle: '#fadede',
-          text: 'Prize 8',
-        },
-      ]"
-    ></Wheel>
+    <div class="ui two column stackable grid container">
+      <div class="column slices-editor">
+        <Slices></Slices>
+      </div>
+      <div class="column">
+        <Wheel></Wheel>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -61,3 +23,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.slices-editor {
+  background: #eaeaea;
+  text-align: left;
+  border-radius: 10px;
+}
+</style>

@@ -1,12 +1,12 @@
 <template>
   <h1>Who runs stand up?</h1>
-  <div class="ui input">
-    <input v-model="newSlice" class="ui input" placeholder="Add a slice" />
-  </div>
-
-  <button class="ui primary button" @click="addSlice">Add</button>
-  <br />
-  <div class="ui text container">
+  <form @submit.prevent="addSlice">
+    <div class="ui input">
+      <input v-model="newSlice" class="ui input" placeholder="Type here" />
+    </div>
+    <button class="ui primary button">Add</button>
+  </form>
+  <div class="ui">
     <Slice
       v-for="(slice, index) in slices"
       :key="index"
@@ -34,13 +34,25 @@ export default {
     const newSlice = ref('');
     const slices = reactive(loadSlices());
 
+    const randomColours = [
+      '#1B9CFC',
+      '#EAB543',
+      '#9AECDB',
+      '#F97F51',
+      '#F97F51',
+      '#FEA47F',
+      '#FC427B',
+    ];
+
     function addSlice() {
       slices.push({
         id: Date.now(),
         done: false,
         text: newSlice.value,
         textFillStyle: '#000',
-        fillStyle: '#fadede',
+        fillStyle:
+          randomColours[Math.floor(Math.random() * randomColours.length)],
+        strokeStyle: '#0D56A6',
       });
       newSlice.value = '';
     }
@@ -70,3 +82,15 @@ export default {
   },
 };
 </script>
+
+<style>
+.input {
+  margin-bottom: 20px;
+}
+
+.segment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</style>
