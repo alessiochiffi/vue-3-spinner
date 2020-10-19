@@ -3,6 +3,7 @@
     <div class="mobile-container">
       <div class="wheel-wrapper">
         <div class="canvas-wrapper">
+          <img id="prizePointer" src="../assets/logo.png" alt="V" />
           <canvas id="canvas" width="310" height="310"> </canvas>
         </div>
         <div
@@ -21,15 +22,16 @@
       <div v-if="!state.wheelSpinning">
         <h2>Yay you got the prize!!</h2>
         <h1>{{ state.prizeName }}</h1>
+        <span @click="[(state.modalPrize = false)]">X</span>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import { reactive, watch } from 'vue';
+import { onMounted, reactive, watch } from 'vue';
 import * as Winwheel from '../assets/winwheel.min.js';
-import { useWheel } from '../composable/useWheel';
+import { useWheel, loadSlices } from '../composable/useWheel';
 
 export default {
   name: 'Wheel',
@@ -48,6 +50,7 @@ export default {
         outterRadius: 310,
         innerRadius: 20,
         lineWidth: 2,
+        segments: loadSlices(),
         animation: {
           type: 'spinOngoing',
           duration: 1,
@@ -102,14 +105,15 @@ export default {
     function onFinishSpin(indicatedSegment) {
       state.prizeName = indicatedSegment.text;
       showPrize();
-      state.theWheel.draw();
     }
 
     watch(useWheel.state, (newSlice, prevSlice) => {
       console.log(prevSlice);
-      state.added = true;
       regenerateWheel(newSlice);
-      // saveSlice(newSlice);
+    });
+
+    onMounted(() => {
+      regenerateWheel();
     });
 
     return {

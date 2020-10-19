@@ -52,7 +52,7 @@ export default {
         textFillStyle: '#000',
         fillStyle:
           randomColours[Math.floor(Math.random() * randomColours.length)],
-        strokeStyle: '#0D56A6',
+        strokeStyle: '#fff',
       });
       newSlice.value = '';
     }
@@ -92,5 +92,15 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+#prizePointer {
+  max-width: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0 auto;
+  top: -6px;
 }
 </style>
