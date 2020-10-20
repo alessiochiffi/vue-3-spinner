@@ -19,12 +19,13 @@
 </template>
 
 <script>
-import { reactive, watch } from 'vue';
+import { reactive, watch, onMounted } from 'vue';
+import { setQuestion, getQuestion } from '../composable/useWheel';
 
 export default {
   setup() {
     const titleState = reactive({
-      title: 'Who gets a free beer?',
+      title: getQuestion(),
       isEditing: false,
     });
 
@@ -34,6 +35,11 @@ export default {
 
     watch(titleState, (newState, oldState) => {
       console.log(titleState, newState, oldState);
+      setQuestion(titleState.title);
+    });
+
+    onMounted(() => {
+      setQuestion(titleState.title);
     });
 
     return {

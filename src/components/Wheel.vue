@@ -19,10 +19,10 @@
       class="custom-modal modal-mask"
       id="modalSpinwheel"
     >
-      <div v-if="!state.wheelSpinning">
-        <h2>Yay the winner is</h2>
-        <h1>{{ state.prizeName }}!</h1>
-        <span @click="[(state.modalPrize = false)]">X</span>
+      <div v-if="!state.wheelSpinning" class="winner">
+        <h2>{{ state.question }}</h2>
+        <h1>🎉 {{ state.prizeName }}!</h1>
+        <span @click="[(state.modalPrize = false)]">X close</span>
       </div>
     </div>
   </section>
@@ -31,7 +31,7 @@
 <script>
 import { onMounted, reactive, watch } from 'vue';
 import * as Winwheel from '../assets/winwheel.min.js';
-import { useWheel, loadSlices } from '../composable/useWheel';
+import { useWheel, loadSlices, getQuestion } from '../composable/useWheel';
 
 export default {
   name: 'Wheel',
@@ -45,6 +45,7 @@ export default {
       wheelPower: 2,
       wheelSpinning: false,
       added: false,
+      question: '',
       WinWheelOptions: {
         textFontSize: 14,
         outterRadius: 310,
@@ -105,15 +106,12 @@ export default {
 
     function onFinishSpin(indicatedSegment) {
       state.prizeName = indicatedSegment.text;
-      // setWinner(state.prizeName);
       showPrize();
     }
 
-    watch(useWheel.state, (newSlice, prevSlice) => {
-      console.log('state changed');
-      console.log(prevSlice);
+    watch(useWheel.state, (newSlice) => {
       regenerateWheel(newSlice);
-
+      state.question = getQuestion();
       state.modalPrize = false;
     });
 
@@ -133,3 +131,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.winner {
+  margin-top: 40px;
+}
+</style>

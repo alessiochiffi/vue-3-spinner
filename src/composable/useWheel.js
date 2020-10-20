@@ -1,6 +1,7 @@
 import { reactive } from 'vue';
 
 let state = reactive({
+  question: 'Who runs stand up today?',
   segments: [],
   winner: '',
 });
@@ -28,10 +29,27 @@ export function setWinner(winner) {
   return (state.winner = winner);
 }
 
+export function getQuestion() {
+  const localQuestion = localStorage.getItem('question');
+
+  if (localQuestion) {
+    return localQuestion;
+  } else {
+    return state.question;
+  }
+}
+
+export function setQuestion(question) {
+  localStorage.setItem('question', question);
+  return (state.question = question);
+}
+
 export const useWheel = {
   state,
   updateSlices,
   loadSlices,
   getWinner,
   setWinner,
+  getQuestion,
+  setQuestion,
 };
