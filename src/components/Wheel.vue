@@ -95,7 +95,6 @@ export default {
       }
       state.theWheel.startAnimation();
       state.theWheel.pauseAnimation();
-      state.theWheel.rotationAngle = 0; // Re-set the wheel angle to 0 degrees.
       state.theWheel.draw(); // Call draw to render changes to the wheel.
       state.wheelSpinning = false;
     }
@@ -106,6 +105,7 @@ export default {
 
     function onFinishSpin(indicatedSegment) {
       state.prizeName = indicatedSegment.text;
+      // setWinner(state.prizeName);
       showPrize();
     }
 

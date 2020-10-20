@@ -1,5 +1,5 @@
 <template>
-  <h1>Who runs stand up?</h1>
+  <Title></Title>
   <form @submit.prevent="addSlice">
     <div class="ui input">
       <input v-model="newSlice" class="ui input" placeholder="Type here" />
@@ -21,6 +21,7 @@
 import { ref, reactive, watch } from 'vue';
 import { loadSlices, updateSlices } from '../composable/useWheel';
 import Slice from '../components/Slice.vue';
+import Title from '../components/Title.vue';
 
 function saveSlice(slice) {
   localStorage.setItem('slices', JSON.stringify(slice));
@@ -29,6 +30,7 @@ function saveSlice(slice) {
 export default {
   components: {
     Slice,
+    Title,
   },
   setup() {
     const newSlice = ref('');

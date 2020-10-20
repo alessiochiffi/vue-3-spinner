@@ -2,6 +2,7 @@ import { reactive } from 'vue';
 
 let state = reactive({
   segments: [],
+  winner: '',
 });
 
 export function updateSlices(slices) {
@@ -19,8 +20,18 @@ export function loadSlices() {
   }
 }
 
+export function getWinner() {
+  return state.winner;
+}
+
+export function setWinner(winner) {
+  return (state.winner = winner);
+}
+
 export const useWheel = {
   state,
   updateSlices,
   loadSlices,
+  getWinner,
+  setWinner,
 };

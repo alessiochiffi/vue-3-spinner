@@ -8,18 +8,21 @@
         <Wheel></Wheel>
       </div>
     </div>
+    <!-- <Winner></Winner> -->
   </div>
 </template>
 
 <script>
 import Slices from './components/Slices.vue';
 import Wheel from './components/Wheel.vue';
+// import Winner from './components/Winner.vue';
 
 export default {
   name: 'app',
   components: {
     Wheel,
     Slices,
+    // Winner,
   },
 };
 </script>
