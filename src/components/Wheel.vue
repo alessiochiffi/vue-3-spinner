@@ -20,8 +20,8 @@
       id="modalSpinwheel"
     >
       <div v-if="!state.wheelSpinning">
-        <h2>Yay you got the prize!!</h2>
-        <h1>{{ state.prizeName }}</h1>
+        <h2>Yay the winner is</h2>
+        <h1>{{ state.prizeName }}!</h1>
         <span @click="[(state.modalPrize = false)]">X</span>
       </div>
     </div>
