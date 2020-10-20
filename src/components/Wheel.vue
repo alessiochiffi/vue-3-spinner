@@ -93,6 +93,8 @@ export default {
       if (state.wheelSpinning) {
         state.theWheel.stopAnimation(false); // Stop the animation, false as param so does not call callback function.
       }
+      state.theWheel.startAnimation();
+      state.theWheel.pauseAnimation();
       state.theWheel.rotationAngle = 0; // Re-set the wheel angle to 0 degrees.
       state.theWheel.draw(); // Call draw to render changes to the wheel.
       state.wheelSpinning = false;
@@ -108,8 +110,11 @@ export default {
     }
 
     watch(useWheel.state, (newSlice, prevSlice) => {
+      console.log('state changed');
       console.log(prevSlice);
       regenerateWheel(newSlice);
+
+      state.modalPrize = false;
     });
 
     onMounted(() => {
