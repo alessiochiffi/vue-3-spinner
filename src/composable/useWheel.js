@@ -6,10 +6,17 @@ let state = reactive({
   winner: '',
 });
 
+/**
+ * Slices / segments for the wheel - sent from the list component
+ * @param {array} slices
+ */
 export function updateSlices(slices) {
   state.segments = slices;
 }
 
+/**
+ * Load slices on page load
+ */
 export function loadSlices() {
   const localSlices = localStorage.getItem('slices');
   if (localSlices === null) {
@@ -21,14 +28,24 @@ export function loadSlices() {
   }
 }
 
+/**
+ * Get winner from state
+ */
 export function getWinner() {
   return state.winner;
 }
 
+/**
+ * Set the winner in the state
+ * @param {string} winner
+ */
 export function setWinner(winner) {
   return (state.winner = winner);
 }
 
+/**
+ * Get the question from local storage or default from state
+ */
 export function getQuestion() {
   const localQuestion = localStorage.getItem('question');
 
