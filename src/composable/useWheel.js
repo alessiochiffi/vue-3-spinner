@@ -39,6 +39,10 @@ export function getQuestion() {
   }
 }
 
+/**
+ * Set the question in the state
+ * @param {string} question
+ */
 export function setQuestion(question) {
   localStorage.setItem('question', question);
   return (state.question = question);
